@@ -3,12 +3,12 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
+import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ClimberArms extends SubsystemBase {
-    private final VictorSP climberMotor; 
+    private final PWMVictorSPX climberMotor; 
     private final DoubleSolenoid piston;
     private final DoubleSolenoid piston2;
 
@@ -18,7 +18,7 @@ public class ClimberArms extends SubsystemBase {
 
     /** Creates a new ExampleSubsystem. **/
     public ClimberArms() {
-        climberMotor = new VictorSP(0);
+        climberMotor = new PWMVictorSPX(0);
         piston = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 1, 2);
         piston2 = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 3, 4);
     }
