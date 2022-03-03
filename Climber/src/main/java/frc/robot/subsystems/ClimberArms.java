@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -9,8 +10,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ClimberArms extends SubsystemBase {
     private final PWMVictorSPX climberMotor; 
-    private final DoubleSolenoid piston;
+    private final DoubleSolenoid piston1;
     private final DoubleSolenoid piston2;
+    private final DigitalInput limitSwitch1;
+    private final DigitalInput limitSwitch2;
 
     public enum State {
         EXTEND, RETRACT;
@@ -19,8 +22,10 @@ public class ClimberArms extends SubsystemBase {
     /** Creates a new ExampleSubsystem. **/
     public ClimberArms() {
         climberMotor = new PWMVictorSPX(0);
-        piston = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 1, 2);
+        piston1 = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 1, 2);
         piston2 = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 3, 4);
+        limitSwitch1 = new DigitalInput(5);
+        limitSwitch2 = new DigitalInput(6);
     }
 
     @Override
@@ -36,15 +41,27 @@ public class ClimberArms extends SubsystemBase {
     }
 
     public DoubleSolenoid getP1() {
-        return piston;
+        return piston1;
     }
 
     public DoubleSolenoid getP2() {
         return piston2;
     }
 
+    public DigitalInput getLimitSwitch1() {
+        return limitSwitch1;
+    }
+
+    public DigitalInput getLimitSwitch2() {
+        return limitSwitch2;
+    }
+
     public void rotateMotor() {
         climberMotor.set(-0.1);
+    }
+
+    public void stopMotor() {
+        climberMotor.set(0);
     }
 
     public void rotateTimedMotor(double d) {

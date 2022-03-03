@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.TraverseClimber;
 import frc.robot.subsystems.ClimberArms;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -28,7 +29,7 @@ public class RobotContainer {
   // private final TraverseClimber climb = new TraverseClimber(new ClimberArms());
   
   private final ClimberArms climber = new ClimberArms();
-
+  private final TraverseClimber climb = new TraverseClimber(climber);
   private final XboxController driveController = new XboxController(5);
   private JoystickButton xboxButtonA = new JoystickButton(driveController, 1); // A Button
   private JoystickButton xboxButtonB = new JoystickButton(driveController, 2); // B Button
@@ -62,8 +63,7 @@ public class RobotContainer {
 
 
     // The full command of climbing. Turn Motor CCW -> Release P2 -> Contract P2 -> Turn Motor CCW -> Release P1
-    // To do: change the amount of time it rotates
-    //xboxButtonA.whenPressed(climb);
+    //xboxButtonA.whenPressed(climber);
 
   }
 
