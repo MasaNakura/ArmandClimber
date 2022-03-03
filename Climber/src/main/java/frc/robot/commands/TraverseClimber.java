@@ -39,6 +39,7 @@ public class TraverseClimber extends CommandBase {
 
 
   /*
+  CommandSequence:
   1: 
   P1: Retracted
   P2: Extended
@@ -56,9 +57,8 @@ public class TraverseClimber extends CommandBase {
   Hits Traveral Bar (Hits Limit switch 1): 
     Extend P2
   Stop Motor. 
-
-
   */
+
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
